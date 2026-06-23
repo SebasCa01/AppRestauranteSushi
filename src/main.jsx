@@ -8,6 +8,8 @@ import { Home } from './components/Home/Home';
 import { PageNotFound } from './components/Home/PageNotFound';
 import { ListProductos } from './components/Producto/ListProductos.jsx';
 import { DetailProducto } from './components/Producto/DetailProducto.jsx'; 
+import { ListCombos } from './components/Combo/ListCombos.jsx'; 
+import { DetailCombo } from './components/Combo/DetailCombo.jsx';
 
 
 const rutas = createBrowserRouter( 
@@ -27,10 +29,17 @@ const rutas = createBrowserRouter(
           element: <ListProductos /> 
         },
         {
-          path: '/producto/:id',   // nueva ruta para detalle
+          path: '/producto/:id',   
           element: <DetailProducto /> 
         },
-
+        {
+          path: '/combos',          
+          element: <ListCombos /> 
+        },
+        {
+          path: '/combo/:id',  
+          element: <DetailCombo /> 
+        },
       ], 
     }, 
   ], 
