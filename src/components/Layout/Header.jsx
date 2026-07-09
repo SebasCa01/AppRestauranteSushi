@@ -50,7 +50,7 @@ export default function Header() {
     <Box sx={{ display: { xs: "none", sm: "block" } }}>
       {navItems.map((item, index) => (
         <Button key={index} component={Link} to={item.link} color="secondary">
-          <Typography textAlign="center">{item.name}</Typography>
+          <Typography align="center">{item.name}</Typography>
         </Button>
       ))}
     </Box>

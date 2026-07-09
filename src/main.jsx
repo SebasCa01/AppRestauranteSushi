@@ -10,6 +10,7 @@ import { ListProductos } from './components/Producto/ListProductos.jsx';
 import { DetailProducto } from './components/Producto/DetailProducto.jsx'; 
 import { ListCombos } from './components/Combo/ListCombos.jsx'; 
 import { DetailCombo } from './components/Combo/DetailCombo.jsx';
+import { ListMenu } from './components/Menu/ListMenu.jsx';
 
 
 const rutas = createBrowserRouter( 
@@ -39,6 +40,10 @@ const rutas = createBrowserRouter(
         {
           path: '/combo/:id',  
           element: <DetailCombo /> 
+        },
+        {
+          path: '/menu',  
+          element: <ListMenu /> 
         },
       ], 
     }, 

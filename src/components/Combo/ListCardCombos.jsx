@@ -82,7 +82,7 @@ export function ListCardCombos({ data, isShopping }) {
                 <IconButton
                   component={Link}
                   to={`/combo/${combo.ComboID}`}
-                  target="_blank"
+                  //target="_blank"
                   aria-label="Detalle"
                   sx={{ ml: 'auto' }}
                 >

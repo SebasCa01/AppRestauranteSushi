@@ -24,7 +24,7 @@ export function ListCardProductos({ data, isShopping }) {
     <Grid container sx={{ p: 2 }} spacing={3}>
       {data &&
         data.map((producto) => (
-          <Grid item xs={12} sm={6} md={4} key={producto.ProductoID}>
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={producto.ProductoID}>
             <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
               <CardHeader
                 sx={{
@@ -80,7 +80,7 @@ export function ListCardProductos({ data, isShopping }) {
                 <IconButton
                   component={Link}
                   to={`/producto/${producto.ProductoID}`}
-                  target="_blank"
+                  //target="_blank"
                   aria-label="Detalle"
                   sx={{ ml: 'auto' }}
                 >
