@@ -93,7 +93,7 @@ export function DetailCombo() {
           variant="contained"
           color="primary"
           startIcon={<ArrowBackIcon />}
-          onClick={() => navigate('/combos')}   // <-- vuelve al listado de combos
+          onClick={() => navigate('/combo')} 
         >
           Regresar
         </Button>

@@ -12,6 +12,18 @@ class ProductoService {
   getProductoById(ProductoID){
     return axios.get(BASE_URL+'/'+ProductoID);
   }
+
+  createProducto(Producto) {
+    return axios.post(BASE_URL, JSON.stringify(Producto));
+  }
+  
+  updateProducto(Producto) {
+    return axios({
+      method: 'put',
+      url: BASE_URL,
+      data: JSON.stringify(Producto)
+    })
+  }
 }
 
 export default new ProductoService();

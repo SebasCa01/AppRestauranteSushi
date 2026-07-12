@@ -11,7 +11,9 @@ import { DetailProducto } from './components/Producto/DetailProducto.jsx';
 import { ListCombos } from './components/Combo/ListCombos.jsx'; 
 import { DetailCombo } from './components/Combo/DetailCombo.jsx';
 import { ListMenu } from './components/Menu/ListMenu.jsx';
-
+import { CreateProducto } from "./components/Producto/CreateProducto.jsx";
+import { UpdateProducto } from "./components/Producto/UpdateProducto";
+import TableProductos from "./components/Producto/TableProductos";
 
 const rutas = createBrowserRouter( 
   [     { 
@@ -26,7 +28,7 @@ const rutas = createBrowserRouter(
           element: <PageNotFound />
         },
         {
-          path: '/productos',
+          path: '/producto',
           element: <ListProductos /> 
         },
         {
@@ -34,7 +36,19 @@ const rutas = createBrowserRouter(
           element: <DetailProducto /> 
         },
         {
-          path: '/combos',          
+          path:'/producto/crear/',
+          element: <CreateProducto />
+        },
+        {
+          path: "/producto/update/:id",
+          element: <UpdateProducto />
+        },
+        {
+          path: "/producto-table",
+          element: <TableProductos />
+        },
+        {
+          path: '/combo',          
           element: <ListCombos /> 
         },
         {
@@ -45,6 +59,7 @@ const rutas = createBrowserRouter(
           path: '/menu',  
           element: <ListMenu /> 
         },
+        
       ], 
     }, 
   ], 

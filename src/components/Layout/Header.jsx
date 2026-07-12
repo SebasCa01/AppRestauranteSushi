@@ -39,9 +39,10 @@ export default function Header() {
   ];
 
   const navItems = [
-    { name: "Productos", link: "/productos" },
-    { name: "Combos", link: "/combos" },
-    { name: "Menús", link: "/menus" },
+    { name: "Productos", link: "/producto" },
+    { name: "Combos", link: "/combo" },
+    { name: "Menús", link: "/menu" },
+    { name: "Mantenimiento Productos", link: "/producto-table" },
   ];
 
   const menuIdPrincipal = "menu-appbar";
