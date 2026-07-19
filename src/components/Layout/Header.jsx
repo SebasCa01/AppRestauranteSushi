@@ -43,6 +43,7 @@ export default function Header() {
     { name: "Combos", link: "/combo" },
     { name: "Menús", link: "/menu" },
     { name: "Mantenimiento Productos", link: "/producto-table" },
+    { name: "Mantenimiento Combos", link: "/combo-table" },
   ];
 
   const menuIdPrincipal = "menu-appbar";

@@ -24,7 +24,12 @@ class ProductoService {
       data: JSON.stringify(Producto)
     })
   }
+
+  getProductoForUpdate(ProductoID){
+    return axios.get(BASE_URL + '/getForUpdate/' + ProductoID);
+  }
 }
+
 
 export default new ProductoService();
     

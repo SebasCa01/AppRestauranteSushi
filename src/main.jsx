@@ -11,9 +11,12 @@ import { DetailProducto } from './components/Producto/DetailProducto.jsx';
 import { ListCombos } from './components/Combo/ListCombos.jsx'; 
 import { DetailCombo } from './components/Combo/DetailCombo.jsx';
 import { ListMenu } from './components/Menu/ListMenu.jsx';
+import  TableProductos  from "./components/Producto/TableProductos";
 import { CreateProducto } from "./components/Producto/CreateProducto.jsx";
 import { UpdateProducto } from "./components/Producto/UpdateProducto";
-import TableProductos from "./components/Producto/TableProductos";
+//import { CreateCombo } from "./components/Combo/CreateCombo.jsx";
+//  import { UpdateCombo } from "./components/Combo/UpdateCombo";
+import TableCombos from "./components/Combo/TableCombos";
 
 const rutas = createBrowserRouter( 
   [     { 
@@ -54,6 +57,18 @@ const rutas = createBrowserRouter(
         {
           path: '/combo/:id',  
           element: <DetailCombo /> 
+        },
+      //  {
+      //    path:'/combo/crear/',
+      //    element: <CreateCombo />
+      //  },
+      //  {
+      //    path: "/combo/update/:id",
+      //    element: <UpdateCombo />
+      //  },
+      {
+          path: "/combo-table",
+          element: <TableCombos />
         },
         {
           path: '/menu',  

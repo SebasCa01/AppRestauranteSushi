@@ -15,6 +15,18 @@ class ComboService {
   getComboById(comboId) {
     return axios.get(`${BASE_URL}/${comboId}`);
   }
+
+  createCombo(Combo) {
+    return axios.post(BASE_URL, JSON.stringify(Combo));
+  }
+  
+  updateCombo(Combo) {
+    return axios({
+      method: 'put',
+      url: BASE_URL,
+      data: JSON.stringify(Combo)
+    })
+  }
 }
 
 export default new ComboService();

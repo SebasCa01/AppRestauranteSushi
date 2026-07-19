@@ -8,22 +8,27 @@ import PropTypes from "prop-types";
 SelectCategoria.propTypes = {
   data: PropTypes.array,
   field: PropTypes.object,
+  error: PropTypes.bool,
 };
 
-export function SelectCategoria({ field, data }) {
+export function SelectCategoria({ field, data, error }) {
   return (
-    <FormControl variant="standard" fullWidth sx={{ m: 1 }}>
-      <InputLabel id="categoria">Categoría</InputLabel>
+    <FormControl variant="outlined" fullWidth error={error}>
+      <InputLabel id="categoria-label">Categoría</InputLabel>
       <Select
         {...field}
-        labelId="categoria"
+        labelId="categoria-label"
         label="Categoría"
-        defaultValue=""
-        value={field.value}
+        // Forzamos a number para que coincida con el value numérico de cada
+        // MenuItem; si llega "" (sin selección) se muestra vacío.
+        value={field.value === "" || field.value === null || field.value === undefined
+          ? ""
+          : Number(field.value)}
+        onChange={(e) => field.onChange(Number(e.target.value))}
       >
         {data &&
           data.map((categoria) => (
-            <MenuItem key={categoria.CategoriaID} value={categoria.CategoriaID}>
+            <MenuItem key={categoria.CategoriaID} value={Number(categoria.CategoriaID)}>
               {categoria.Nombre}
             </MenuItem>
           ))}
