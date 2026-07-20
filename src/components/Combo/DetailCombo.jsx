@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import List from '@mui/material/List';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemButton from '@mui/material/ListItemButton';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import Button from '@mui/material/Button';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useParams, useNavigate } from 'react-router-dom';
-import ComboService from '../../services/ComboService'; // servicio para combos
+import React, { useState, useEffect } from "react";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import List from "@mui/material/List";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemButton from "@mui/material/ListItemButton";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import Button from "@mui/material/Button";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useParams, useNavigate } from "react-router-dom";
+import ComboService from "../../services/ComboService"; // servicio para combos
 
 // Componente para mostrar el detalle de un combo
 export function DetailCombo() {
   const { id } = useParams(); // obtener el id del combo desde la ruta
   const navigate = useNavigate();
-  const BASE_URL = import.meta.env.VITE_BASE_URL + 'uploads';
+  const BASE_URL = import.meta.env.VITE_BASE_URL + "uploads";
 
   const [data, setData] = useState(null);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -47,9 +47,9 @@ export function DetailCombo() {
             <Box
               component="img"
               sx={{
-                borderRadius: '8px',
-                maxWidth: '100%',
-                height: 'auto',
+                borderRadius: "8px",
+                maxWidth: "100%",
+                height: "auto",
                 boxShadow: 3,
               }}
               alt={data.Nombre}
@@ -64,7 +64,7 @@ export function DetailCombo() {
             </Typography>
 
             {/* Precio */}
-            <Typography variant="h5" sx={{ mt: 2, color: 'primary.main' }}>
+            <Typography variant="h5" sx={{ mt: 2, color: "primary.main" }}>
               ₡{data.Precio}
             </Typography>
 
@@ -74,12 +74,15 @@ export function DetailCombo() {
             </Typography>
             <List>
               {Array.isArray(data.Productos) &&
-                data.Productos.map((producto, index) => (
-                  <ListItemButton key={index}>
+                data.Productos.map((producto) => (
+                  <ListItemButton key={producto.ProductoID}>
                     <ListItemIcon>
                       <ArrowRightIcon />
                     </ListItemIcon>
-                    <ListItemText primary={producto} />
+
+                    <ListItemText
+                      primary={`${producto.Nombre} (x${producto.Cantidad})`}
+                    />
                   </ListItemButton>
                 ))}
             </List>
@@ -88,12 +91,12 @@ export function DetailCombo() {
       )}
 
       {/* Botón regresar */}
-      <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}>
+      <Box sx={{ mt: 4, display: "flex", justifyContent: "center" }}>
         <Button
           variant="contained"
           color="primary"
           startIcon={<ArrowBackIcon />}
-          onClick={() => navigate('/combo')} 
+          onClick={() => navigate("/combo")}
         >
           Regresar
         </Button>

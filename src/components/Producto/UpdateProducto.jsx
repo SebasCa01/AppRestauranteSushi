@@ -201,7 +201,7 @@ export function UpdateProducto() {
 
           reset(productoFormateado);
           setImagenPreview(
-            "http://localhost/apiichigosushi/uploads/" +
+            "http://localhost:81/apiichigosushi/uploads/" +
               (producto.Imagen ?? null),
           ); // vista previa si ya existe
           console.log(

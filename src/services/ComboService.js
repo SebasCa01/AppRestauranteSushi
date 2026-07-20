@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 // Definición para llamar al API y obtener el listado de combos
-const BASE_URL = import.meta.env.VITE_BASE_URL + 'combo';
+const BASE_URL = import.meta.env.VITE_BASE_URL + "combo";
 
 class ComboService {
   // Listar combos
@@ -16,16 +16,24 @@ class ComboService {
     return axios.get(`${BASE_URL}/${comboId}`);
   }
 
-  createCombo(Combo) {
-    return axios.post(BASE_URL, JSON.stringify(Combo));
+  createCombo(data) {
+    return axios.post(BASE_URL, data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }
-  
-  updateCombo(Combo) {
-    return axios({
-      method: 'put',
-      url: BASE_URL,
-      data: JSON.stringify(Combo)
-    })
+
+  updateCombo(data) {
+    return axios.put(BASE_URL, data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+  }
+
+  getComboForUpdate(ComboID) {
+    return axios.get(BASE_URL + "/getForUpdate/" + ComboID);
   }
 }
 
