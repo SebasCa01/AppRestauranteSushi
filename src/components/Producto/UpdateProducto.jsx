@@ -89,6 +89,7 @@ export function UpdateProducto() {
   const [categorias, setCategorias] = useState([]);
   const [ingredientes, setIngredientes] = useState([]);
   const [imagenPreview, setImagenPreview] = useState(null);
+  const [imagenActual, setImagenActual] = useState(null);
 
   const productoSchema = yup.object({
     nombre: yup
@@ -126,8 +127,12 @@ export function UpdateProducto() {
             .required("Debes seleccionar un ingrediente"),
         }),
       )
-      .min(1, "Debe tener al menos un ingrediente"),
-    imagen: yup.string().trim().required("La imagen es requerida"),
+      .when("categoria_id", {
+        is: (categoria_id) => Number(categoria_id) !== 2, // 2 = Refrescos
+        then: (schema) => schema.min(1, "Debe tener al menos un ingrediente"),
+        otherwise: (schema) => schema.min(0),
+      }),
+    imagen: yup.mixed().nullable(),
   });
 
   const {
@@ -172,7 +177,6 @@ export function UpdateProducto() {
 
       ProductoService.getProductoForUpdate(id)
         .then((response) => {
-          console.log("Producto original:", response.data);
           const producto = response.data || {};
 
           // Normalizamos los ingredientes
@@ -194,19 +198,12 @@ export function UpdateProducto() {
               ingredientesFormateados.length > 0
                 ? ingredientesFormateados
                 : [{ ingrediente_id: "" }],
-            imagen: null,
           };
-
-          console.log("Producto formateado:", productoFormateado);
 
           reset(productoFormateado);
           setImagenPreview(
             "http://localhost:81/apiichigosushi/uploads/" +
               (producto.Imagen ?? null),
-          ); // vista previa si ya existe
-          console.log(
-            "Imagen preview:",
-            "http://localhost/apiichigosushi/uploads/" + producto.Imagen,
           );
         })
         .catch((error) => setError(error))
@@ -241,15 +238,15 @@ export function UpdateProducto() {
     setError("");
 
     const formData = new FormData();
-    formData.append("id", id);
-    formData.append("nombre", dataForm.Nombre);
-    formData.append("descripcion", dataForm.Descripcion);
-    formData.append("precio", dataForm.Precio);
-    formData.append("categoria_id", dataForm.CategoriaID);
+    formData.append("ProductoID", id);
+    formData.append("nombre", dataForm.nombre);
+    formData.append("descripcion", dataForm.descripcion);
+    formData.append("precio", dataForm.precio);
+    formData.append("categoria_id", dataForm.categoria_id);
     formData.append("ingredientes", JSON.stringify(dataForm.ingredientes));
 
     if (dataForm.imagen instanceof File) {
-      formData.append("imagen", dataForm.Imagen);
+      formData.append("imagen", dataForm.imagen);
     }
 
     ProductoService.updateProducto(formData)
@@ -506,7 +503,10 @@ export function UpdateProducto() {
                         accept="image/*"
                         onChange={(e) => {
                           const file = e.target.files[0];
-                          setValue("Imagen", file, { shouldValidate: true });
+                          if (file) {
+                            setValue("imagen", file, { shouldValidate: true });
+                            setImagenPreview(URL.createObjectURL(file));
+                          }
                         }}
                       />
                       {imagenPreview && (
@@ -632,7 +632,7 @@ export function UpdateProducto() {
                             variant="outlined"
                             color="inherit"
                             onClick={() => removeIngrediente(index)}
-                            disabled={fields.length === 1}
+                            disabled={fields.length === 0}
                             sx={{
                               borderRadius: 2,
                               minWidth: 110,

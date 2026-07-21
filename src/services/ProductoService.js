@@ -14,15 +14,19 @@ class ProductoService {
   }
 
   createProducto(Producto) {
-    return axios.post(BASE_URL, JSON.stringify(Producto));
+    return axios.post(BASE_URL, Producto, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }
   
   updateProducto(Producto) {
-    return axios({
-      method: 'put',
-      url: BASE_URL,
-      data: JSON.stringify(Producto)
-    })
+    return axios.put(BASE_URL, Producto, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }
 
   getProductoForUpdate(ProductoID){

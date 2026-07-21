@@ -9,23 +9,30 @@ SelectCategoria.propTypes = {
   data: PropTypes.array,
   field: PropTypes.object,
   error: PropTypes.bool,
+  label: PropTypes.string,
+  allowAll: PropTypes.bool,
 };
 
-export function SelectCategoria({ field, data, error }) {
+export function SelectCategoria({ field, data, error, label = "Categoría", allowAll = false }) {
   return (
     <FormControl variant="outlined" fullWidth error={error}>
-      <InputLabel id="categoria-label">Categoría</InputLabel>
+      <InputLabel id="categoria-label">{label}</InputLabel>
       <Select
         {...field}
         labelId="categoria-label"
-        label="Categoría"
-        // Forzamos a number para que coincida con el value numérico de cada
-        // MenuItem; si llega "" (sin selección) se muestra vacío.
-        value={field.value === "" || field.value === null || field.value === undefined
-          ? ""
-          : Number(field.value)}
-        onChange={(e) => field.onChange(Number(e.target.value))}
+        label={label}
+        value={
+          field.value === "" || field.value === null || field.value === undefined
+            ? ""
+            : Number(field.value)
+        }
+        onChange={(e) => field.onChange(e.target.value === "" ? "" : Number(e.target.value))}
       >
+        {allowAll && (
+          <MenuItem value="">
+            <em>Todas las categorías</em>
+          </MenuItem>
+        )}
         {data &&
           data.map((categoria) => (
             <MenuItem key={categoria.CategoriaID} value={Number(categoria.CategoriaID)}>
