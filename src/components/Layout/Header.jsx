@@ -44,6 +44,7 @@ export default function Header() {
     { name: "Menús", link: "/menu" },
     { name: "Mantenimiento Productos", link: "/producto-table" },
     { name: "Mantenimiento Combos", link: "/combo-table" },
+    { name: "Mantenimiento Procesos", link: "/proceso-table" },
   ];
 
   const menuIdPrincipal = "menu-appbar";

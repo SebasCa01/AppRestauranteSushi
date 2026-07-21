@@ -113,7 +113,6 @@ export default function TableProductos() {
         <Table sx={{ minWidth: 650 }} aria-label="tabla productos">
           <TableHead>
             <TableRow sx={{ backgroundColor: "#fdf1f1" }}>
-              <TableCell sx={{ fontWeight: 700 }}>ID</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Imagen</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Nombre</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Precio</TableCell>
@@ -128,7 +127,6 @@ export default function TableProductos() {
                 hover
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell>{row.ProductoID}</TableCell>
                 <TableCell>
                   <Avatar
                     variant="rounded"

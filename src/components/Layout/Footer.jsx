@@ -22,7 +22,7 @@ export function Footer() {
         <Grid container rowSpacing={1}> 
           <Grid size={12}> 
             <Typography align="center" color="white" variant="subtitle1"> 
-              ISW-613 
+              ICHIGO SUSHI - Todos los derechos reservados 
             </Typography> 
           </Grid> 
           <Grid size={12}> 

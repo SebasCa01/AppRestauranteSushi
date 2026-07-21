@@ -84,7 +84,6 @@ export default function TableCombos() {
         <Table sx={{ minWidth: 650 }} aria-label="tabla combos">
           <TableHead>
             <TableRow sx={{ backgroundColor: "#fdf1f1" }}>
-              <TableCell sx={{ fontWeight: 700 }}>ID</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Imagen</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Nombre</TableCell>
               <TableCell sx={{ fontWeight: 700 }}>Precio</TableCell>
@@ -99,7 +98,6 @@ export default function TableCombos() {
                 hover
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell>{row.ComboID}</TableCell>
                 <TableCell>
                   <Avatar
                     variant="rounded"

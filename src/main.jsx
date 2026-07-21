@@ -17,6 +17,10 @@ import { UpdateProducto } from "./components/Producto/UpdateProducto";
 import { CreateCombo } from "./components/Combo/CreateCombo.jsx";
 import { UpdateCombo } from "./components/Combo/UpdateCombo";
 import TableCombos from "./components/Combo/TableCombos";
+import TableProcesos from "./components/Proceso/TableProcesos";
+import { CreateProceso } from "./components/Proceso/CreateProceso";
+import { UpdateProceso } from "./components/Proceso/UpdateProceso";
+import { DetailProceso } from "./components/Proceso/DetailProceso.jsx";
 
 const rutas = createBrowserRouter([
   {
@@ -73,6 +77,22 @@ const rutas = createBrowserRouter([
       {
         path: "/menu",
         element: <ListMenu />,
+      },
+      {
+        path: "/proceso/:id",
+        element: <DetailProceso />,
+      },
+      {
+        path: "/proceso/crear/",
+        element: <CreateProceso />,
+      },
+      {
+        path: "/proceso/update/:id",
+        element: <UpdateProceso />,
+      },
+      {
+        path: "/proceso-table",
+        element: <TableProcesos />,
       },
     ],
   },
